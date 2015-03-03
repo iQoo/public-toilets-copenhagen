@@ -9,32 +9,34 @@
         this.searchRadius = options.searchRadius || 805; //in meters ~ 1/2 mile
 
         // the encrypted Table ID of your Fusion Table (found under File => About)
-        this.fusionTableId = options.fusionTableId || "",
+        this.fusionTableId = options.fusionTableId || "1upc2GFl1qb1ZkAME_mnjxj1V0o42-kefAJiZjlce",
+        // https://www.google.com/fusiontables/DataSource?docid=1upc2GFl1qb1ZkAME_mnjxj1V0o42-kefAJiZjlce
 
         // Found at https://console.developers.google.com/
         // Important! this key is for demonstration purposes. please register your own.
-        this.googleApiKey = options.googleApiKey || "",
-        
+        this.googleApiKey = options.googleApiKey || "AIzaSyDIevSvpV-ONb4Pf15VUtwyr_zZa7ccwq4",
+        //**PLEASE INSERT YOUR OWN KEY ABOVE**
+
         // name of the location column in your Fusion Table.
         // NOTE: if your location column name has spaces in it, surround it with single quotes
         // example: locationColumn:     "'my location'",
-        this.locationColumn = options.locationColumn || "geometry";
-        
+        this.locationColumn = options.locationColumn || "Latitude";
+
         // appends to all address searches if not present
-        this.locationScope = options.locationScope || "chicago";
+        this.locationScope = options.locationScope || "copenhagen";
 
         // zoom level when map is loaded (bigger is more zoomed in)
-        this.defaultZoom = options.defaultZoom || 11; 
+        this.defaultZoom = options.defaultZoom || 11;
 
         // center that your map defaults to
         this.map_centroid = new google.maps.LatLng(options.map_center[0], options.map_center[1]);
-        
+
         // marker image for your searched address
         this.addrMarkerImage = options.addrMarkerImage || 'images/blue-pushpin.png';
-    
+
     	this.currentPinpoint = null;
     	$("#result_count").html("");
-        
+
         this.myOptions = {
             zoom: this.defaultZoom,
             center: this.map_centroid,
@@ -42,7 +44,7 @@
         };
         this.geocoder = new google.maps.Geocoder();
         this.map = new google.maps.Map($("#map_canvas")[0], this.myOptions);
-        
+
         // maintains map centerpoint for responsive design
         google.maps.event.addDomListener(self.map, 'idle', function () {
             self.calculateCenter();
@@ -55,11 +57,11 @@
         //reset filters
         $("#search_address").val(self.convertToPlainString($.address.parameter('address')));
         var loadRadius = self.convertToPlainString($.address.parameter('radius'));
-        if (loadRadius != "") 
+        if (loadRadius != "")
             $("#search_radius").val(loadRadius);
-        else 
+        else
             $("#search_radius").val(self.searchRadius);
-        
+
         $(":checkbox").prop("checked", "checked");
         $("#result_box").hide();
 
@@ -72,6 +74,15 @@
     };
 
     //-----custom functions-----
+    //---MODIFY column header and values below to match your Google Fusion Table AND index.html
+    //-- TEXTUAL OPTION to display legend and filter by non-numerical data in your table
+    var type_column = "type";  // -- note use of single & double quotes for two-word column header
+    var tempWhereClause = [];
+    if ( $("#cbType1").is(':checked')) tempWhereClause.push("Handicap");
+    if ( $("#cbType2").is(':checked')) tempWhereClause.push("Unisex");
+    if ( $("#cbType3").is(':checked')) tempWhereClause.push("Pissoir");
+    whereClause += " AND " + type_column + " IN ('" + tempWhereClause.join("','") + "')";
+
     //-----end of custom functions-----
 
     MapsLib.prototype.submitSearch = function (whereClause, map) {
@@ -151,7 +162,7 @@
         var address = $("#search_address").val();
         self.searchRadius = $("#search_radius").val();
         self.whereClause = self.locationColumn + " not equal to ''";
-        
+
         //-----custom filters-----
         //-----end of custom filters-----
 
