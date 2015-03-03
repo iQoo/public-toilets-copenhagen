@@ -23,8 +23,8 @@ var MapsLib = {
 
   //MODIFY the encrypted Table ID of your Fusion Table (found under File => About)
   //NOTE: numeric IDs will be depricated soon
-  fusionTableId:      "1upc2GFl1qb1ZkAME_mnjxj1V0o42-kefAJiZjlce",
-  // https://www.google.com/fusiontables/DataSource?docid=1upc2GFl1qb1ZkAME_mnjxj1V0o42-kefAJiZjlce
+  fusionTableId:      "1wGi1FwsQeWNcU30Z1EstCfXWbM2cEie0qK3oalIY",
+  // Jack's update of your table: https://www.google.com/fusiontables/data?docid=1wGi1FwsQeWNcU30Z1EstCfXWbM2cEie0qK3oalIY
 
   //MODIFY Google Fusion Tables API key. found at https://code.google.com/apis/console/
   //*Important* this key is for demonstration purposes. please register your own.
