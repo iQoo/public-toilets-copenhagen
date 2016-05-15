@@ -17,18 +17,18 @@ google.maps.visualRefresh = true;
 
 var MapsLib = MapsLib || {};
 var MapsLib = {
-
+ 
   //Setup section - put your Fusion Table details here
   //Using the v1 Fusion Tables API. See https://developers.google.com/fusiontables/docs/v1/migration_guide for more info
 
   //MODIFY the encrypted Table ID of your Fusion Table (found under File => About)
   //NOTE: numeric IDs will be depricated soon
-  fusionTableId:      "1wGi1FwsQeWNcU30Z1EstCfXWbM2cEie0qK3oalIY",
+  fusionTableId:      "1AO0rg_CKUTkO51PDFSs-dqmB7mmCf17LOkjditlM",
   // Jack's update of your table: https://www.google.com/fusiontables/data?docid=1wGi1FwsQeWNcU30Z1EstCfXWbM2cEie0qK3oalIY
 
   //MODIFY Google Fusion Tables API key. found at https://code.google.com/apis/console/
   //*Important* this key is for demonstration purposes. please register your own.
-  googleApiKey:       "AIzaSyA3FQFrNr5W2OEVmuENqhb2MBB2JabdaOY",
+  googleApiKey:       "AIzaSyCMSEYfLd7JWH2P8vG78XfEHWwDyp6nlEM",
 
   //MODIFY name of the location column in your Fusion Table.
   //NOTE: if your location column name has spaces in it, surround it with single quotes
